@@ -1,7 +1,6 @@
 #Importing necessary libraries
 
 from bs4 import BeautifulSoup
-import urllib
 import requests 
 
 """
@@ -21,7 +20,7 @@ def downloadPage (url, filename, params):
 	if not params:
 		cs = requests.get(url)
 	else:
-		cs = requests.post(url,data=urllib.urlencode(params))
+		cs = requests.post(url,data=params) #no need of encoding the params here
 
 	#open a file to write output
 	q5 = open (filename,"w")
@@ -34,6 +33,6 @@ def downloadPage (url, filename, params):
 	cs.close();
 
 
-#calling functions to do actial task
+#calling functions to do actual task
 downloadPage("http://casesearch.courts.state.md.us/casesearch/","q5-1.html", None)
 downloadPage("http://casesearch.courts.state.md.us/casesearch/processDisclaimer.jis","q5-2.html",{"disclaimer":"Y"})
